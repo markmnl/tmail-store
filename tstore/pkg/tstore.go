@@ -1,6 +1,6 @@
 package tstore
 
-// Msg is a message
+// Msg represents a message defined by the schema: https://github.com/markmnl/tmail/blob/master/msgschema.json
 type Msg struct {
 	ID		string	`json:"id"`
 	PID		string	`json:"pid"`
