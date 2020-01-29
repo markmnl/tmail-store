@@ -1,15 +1,21 @@
 package tstore
 
-// Msg represents a message defined by the schema: https://github.com/markmnl/tmail/blob/master/msgschema.json
+// Msg represents a tmail message defined by the schema: https://github.com/markmnl/tmail/blob/master/msgschema.json
 type Msg struct {
-	ID		string	`json:"id"`
-	PID		string	`json:"pid"`
-	From 	string	`json:"from"`
-	To 		string	`json:"to"`
-	Time 	int64	`json:"time"`
-	Topic	string	`json:"topic"`
-	Type 	string	`json:"type"`
-	Content string	`json:"content"`
+	ID		[32]byte	
+	PID		[32]byte	
+	PID64	string		`json:"pid64"`
+	From 	string		`json:"from"`
+	To 		[]string	`json:"to"`
+	Time 	int64		`json:"time"`
+	Topic	string		`json:"topic"`
+	Type 	string		`json:"type"`
+	Content string		`json:"content"`
+}
+
+// MsgVerifyer defines the ParentExists(msg) method 
+type MsgVerifyer interface {
+	ParentExists(msg *Msg) (bool, error)
 }
 
 // MsgStorer defines the Store(msg) method to store a Msg
