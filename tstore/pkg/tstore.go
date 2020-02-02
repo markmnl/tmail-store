@@ -6,7 +6,7 @@ type Msg struct {
 	PID		[32]byte	
 	PID64	string		`json:"pid64"`
 	From 	string		`json:"from"`
-	To 		[]string	`json:"to"`
+	To 		string		`json:"to"`
 	Time 	int64		`json:"time"`
 	Topic	string		`json:"topic"`
 	Type 	string		`json:"type"`
@@ -33,3 +33,4 @@ type MsgFetcher interface {
 type MsgSearcher interface {
 	Search(str *string) ([]Msg, error)
 }
+
